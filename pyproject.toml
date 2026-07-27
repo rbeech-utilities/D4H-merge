@@ -1,0 +1,21 @@
+[build-system]
+requires=["setuptools>=69","wheel"]
+build-backend="setuptools.build_meta"
+
+[project]
+name="d4h-merge"
+version="0.1.0"
+description="D4H Merge"
+readme="README.md"
+requires-python=">=3.12"
+license="MIT"
+dependencies=["PySide6","requests","pypdf"]
+
+[project.scripts]
+d4h-merge="d4h_merge.main:main"
+
+[tool.setuptools]
+package-dir={""="src"}
+
+[tool.setuptools.packages.find]
+where=["src"]
