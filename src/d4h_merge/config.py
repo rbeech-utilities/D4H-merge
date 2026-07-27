@@ -1,2 +1,1 @@
-class Config:
-    pass
+# Placeholder - next milestone wires settings persistence.
