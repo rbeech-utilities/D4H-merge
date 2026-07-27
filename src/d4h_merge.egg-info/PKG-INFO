@@ -1,0 +1,16 @@
+Metadata-Version: 2.4
+Name: d4h-merge
+Version: 0.1.0
+Summary: D4H Merge
+License-Expression: MIT
+Requires-Python: >=3.12
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: PySide6
+Requires-Dist: requests
+Requires-Dist: pypdf
+Dynamic: license-file
+
+# D4H Merge
+
+Initial project skeleton.

@@ -1,0 +1,2 @@
+[console_scripts]
+d4h-merge = d4h_merge.main:main
