@@ -1,8 +1,8 @@
 from __future__ import annotations
 
+import os
 from configparser import ConfigParser
 from pathlib import Path
-import os
 
 
 class Config:
@@ -19,16 +19,14 @@ class Config:
     def __init__(self) -> None:
 
         appdata = Path(
-    os.environ.get(
-        "APPDATA",
-        Path.home() / "AppData" / "Roaming",
-    )
-)
+            os.environ.get(
+                "APPDATA",
+                str(Path.home() / "AppData" / "Roaming"),
+            )
+        )
 
-self.app_folder = appdata / "D4H Merge"
-self.app_folder.mkdir(parents=True, exist_ok=True)
-
-self.settings_file = self.app_folder / "settings.ini"
+        self.app_folder = appdata / "D4H Merge"
+        self.app_folder.mkdir(parents=True, exist_ok=True)
 
         self.settings_file = self.app_folder / "settings.ini"
 
@@ -55,7 +53,6 @@ self.settings_file = self.app_folder / "settings.ini"
             self.save()
 
     def save(self) -> None:
-
         with self.settings_file.open("w", encoding="utf-8") as f:
             self.parser.write(f)
 
@@ -85,18 +82,14 @@ self.settings_file = self.app_folder / "settings.ini"
 
     @property
     def report_order(self) -> list[int]:
-
-        value = self.parser["General"]["report_order"]
-
         return [
             int(x.strip())
-            for x in value.split(",")
+            for x in self.parser["General"]["report_order"].split(",")
             if x.strip()
         ]
 
     @report_order.setter
     def report_order(self, reports: list[int]) -> None:
-
         self.parser["General"]["report_order"] = ",".join(
             str(x) for x in reports
         )
