@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from configparser import ConfigParser
 from pathlib import Path
+import os
 
 
 class Config:
@@ -17,8 +18,17 @@ class Config:
 
     def __init__(self) -> None:
 
-        self.app_folder = Path.home() / ".d4h_merge"
-        self.app_folder.mkdir(parents=True, exist_ok=True)
+        appdata = Path(
+    os.environ.get(
+        "APPDATA",
+        Path.home() / "AppData" / "Roaming",
+    )
+)
+
+self.app_folder = appdata / "D4H Merge"
+self.app_folder.mkdir(parents=True, exist_ok=True)
+
+self.settings_file = self.app_folder / "settings.ini"
 
         self.settings_file = self.app_folder / "settings.ini"
 
